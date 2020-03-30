@@ -1,0 +1,22 @@
+<svg id="logo" xmlns="http://www.w3.org/2000/svg" width="75.5" height="57.5" viewBox="0 0 75.5 57.5">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #fff;
+        stroke: #000;
+        stroke-linejoin: round;
+        fill-rule: evenodd;
+      }
+
+      .cls-1 {
+        stroke-width: 3px;
+      }
+
+      .cls-2 {
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <path id="Retângulo_4" data-name="Retângulo 4" class="cls-1" d="M133.4,39L154,79H112Zm0,5.49,6.34,11.765h-4.755L132.6,59.392l-1.585-2.353-7.132,4.706Z" transform="translate(-82 -25)"/>
+  <path id="Retângulo_4_cópia" data-name="Retângulo 4 cópia" class="cls-2" d="M112,28l26,51H85Zm0,7,8,15h-6l-3,4-2-3-9,6Z" transform="translate(-82 -25)"/>
+</svg>

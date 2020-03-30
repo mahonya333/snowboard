@@ -1,0 +1,73 @@
+@import "mixins";
+@import "vars";
+@import "global";
+@import "libs";
+@import "fonts";
+
+/* begin header */
+.header {
+  background-color: $color-black;
+  &__inner {
+    padding: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.header-logo {
+  margin-right: 4rem;
+}
+.header-navigation {
+  display: flex;
+  &__list {
+    display: flex;
+    align-items: center;
+    &-item {
+      & + .header-navigation__list-item {
+        margin-left: 2.5rem;
+      }
+    }
+    &-link {
+      color: $color-white;
+      font-size: 1.3rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+  }
+}
+/* end header */
+
+/* begin banner */
+.banner {
+  &-slider {
+  }
+  &-item {
+    min-height: 65rem;
+    &__content{
+        max-width: 50rem;
+        width: 100%;
+        margin: 21rem auto 0 auto;
+        &-title{
+            font-size: 8rem;
+            line-height: 1;
+            margin: 0;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+        &-link{
+            display: inline-block;
+            margin-top: 4rem;
+            font-size: 1.4rem;
+            color: $color-white;
+            text-transform: uppercase;
+            padding: 2rem 3.3rem;
+            width: 15rem;
+            background-color: $color-black;
+            margin-left: calc(100% - 15rem);
+        }
+    }
+  }
+}
+
+/* end banner */

@@ -17,7 +17,7 @@ body {
     background-color: $color-white;
 }
 body {
-    line-height: 1.5;
+    line-height: 1.3;
 }
 address {
     font-style: normal;
@@ -109,8 +109,7 @@ input[placeholder] {
 .site-wrapper {
     display: flex;
     flex-direction: column;
-/*     font-family: $pn-regular; */  /* Подключаем по ситуации шрифт с дизайна */
-    font-size: 1.6rem;
+    font-family: $pn-regular;
     min-height: 100vh;
 }
 

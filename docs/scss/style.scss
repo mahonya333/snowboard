@@ -12,6 +12,20 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: relative;
+  }
+  &__menu-btn {
+    display: none;
+    @include button-reset;
+    color: $color-white;
+    font-size: 1.5rem;
+    transition: all 0.3s ease-in-out;
+    @include breakpoint($mobile-width) {
+      display: block;
+    }
+    &:hover {
+      color: $color-blue;
+    }
   }
 }
 .header-logo {
@@ -22,9 +36,31 @@
   &__list {
     display: flex;
     align-items: center;
+    @include breakpoint($mobile-width) {
+      display: none;
+      position: absolute;
+      z-index: 50;
+      top: 100%;
+      background: $color-blue;
+      border-radius: 0.8rem;
+      text-align: center;
+      width: 50%;
+      min-width: 20rem;
+      border: 1px solid $color-white;
+    }
+    @include breakpoint($mobile-width-small) {
+      width: 100%;
+    }
+    @include min-breakpoint($mobile-width) {
+      display: flex !important;
+    }
     &-item {
       & + .header-navigation__list-item {
         margin-left: 2.5rem;
+        @include breakpoint($mobile-width) {
+          margin-left: 0;
+          border-top: 1px solid $color-white;
+        }
       }
     }
     &-link {
@@ -33,27 +69,71 @@
       font-size: 1.3rem;
       text-transform: uppercase;
       text-decoration: none;
+      transition: all 0.3s ease-in-out;
+      @include breakpoint($mobile-width) {
+        display: block;
+        padding: 0.5rem 1.5rem;
+      }
+      &:hover {
+        color: $color-blue;
+        @include breakpoint($mobile-width) {
+          color: #13527f;
+        }
+      }
     }
+  }
+}
+.header-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &__btn {
+    display: inline;
+    margin-left: 3rem;
+    margin-right: 1rem;
+    @include button-reset;
+    color: $color-white;
+    font-size: 1.4rem;
+    line-height: 1;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      color: $color-blue;
+    }
+    &.icon-lock {
+      font-size: 1.5rem;
+    }
+  }
+  &__currency {
+    font-family: $pn-semibold;
+    font-size: 1.5rem;
   }
 }
 /* end header */
 
 /* begin banner */
 .banner {
-  &-slider {
-  }
   &-item {
     min-height: 65rem;
+    @include breakpoint($mobile-width) {
+      min-height: 45rem;
+    }
     &__content {
       max-width: 50rem;
       width: 100%;
       margin: 21rem auto 0 auto;
+      @include breakpoint($mobile-width) {
+        text-align: center;
+        margin: 13rem auto 0 auto;
+      }
       &-title {
         font-family: $pn-exBold;
         font-size: 8rem;
         line-height: 1;
         margin: 0;
         text-transform: uppercase;
+        @include breakpoint($mobile-width) {
+          font-size: 4rem;
+        }
         &--black {
           color: $color-black;
         }
@@ -71,6 +151,14 @@
         text-align: center;
         background-color: $color-black;
         margin-left: calc(100% - 15rem);
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+        @include breakpoint($mobile-width) {
+          margin-left: 0;
+        }
+        &:hover {
+          color: $color-blue;
+        }
       }
     }
   }
@@ -81,33 +169,61 @@
 .company {
   min-height: 95rem;
   padding-top: 24.5rem;
+  padding-bottom: 3rem;
+  @include breakpoint($tablet-width) {
+    padding-top: 12rem;
+    min-height: 45rem;
+  }
+  @include breakpoint($mobile-width) {
+    padding-top: 5rem;
+    padding-bottom: 1.5rem;
+  }
 }
 .company-content {
   max-width: 61rem;
   width: 100%;
+  @include breakpoint($mobile-width) {
+    max-width: 100%;
+  }
   &__title {
     font-family: $pn-exBold;
     font-size: 4.8rem;
     text-transform: uppercase;
     margin: 0 0 6.5rem 0;
+    @include breakpoint($mobile-width) {
+      font-size: 2.8rem;
+      margin: 0 0 2.5rem 0;
+      text-align: center;
+    }
   }
   &__text {
     font-size: 1.5rem;
     line-height: 3rem;
-    & + .company-content__text{
+    & + .company-content__text {
       margin-top: 4rem;
+      @include breakpoint($mobile-width) {
+        margin-top: 2rem;
+      }
     }
   }
 }
 /* end company */
 
 /* begin features */
-.features{
-  &__inner{
+.features {
+  &__inner {
     padding-top: 12rem;
     padding-bottom: 5rem;
+    @include breakpoint($tablet-width) {
+      padding-top: 6rem;
+      padding-bottom: 2.5rem;
+    }
+    @include breakpoint($mobile-width) {
+      padding-top: 3rem;
+      padding-bottom: 1rem;
+    }
   }
-  &__title{
+  &__title {
     margin: 0;
     padding-bottom: 6rem;
     font-family: $pn-exBold;
@@ -116,8 +232,8 @@
     color: $color-black;
     text-align: center;
     position: relative;
-    &::before{
-      content: '';
+    &::before {
+      content: "";
       position: absolute;
       bottom: 0;
       left: 0;
@@ -125,73 +241,127 @@
       margin: 0 auto;
       width: 3rem;
       height: 3rem;
-      background-image: url('../img/icon-cross.svg');
+      background-image: url("../img/icon-cross.svg");
       background-repeat: no-repeat;
       background-size: cover;
       background-position: center center;
     }
   }
 }
-.features-items{
+.features-items {
   display: flex;
   justify-content: space-between;
   padding: 8.5rem 0;
+  margin-left: -2rem;
+  @include breakpoint($tablet-width) {
+    flex-wrap: wrap;
+    padding: 4.5rem 0;
+  }
+  @include breakpoint($mobile-width) {
+    margin-left: 0;
+    padding: 2rem 0;
+  }
 }
-.features-item{
-  max-width: 22rem;
-  width: 100%;
-  &__link{
+.features-item {
+  flex-basis: calc(25% - 2rem);
+  margin-left: 2rem;
+  @include breakpoint($tablet-width) {
+    flex-basis: calc(50% - 2rem);
+    padding-bottom: 2rem;
+  }
+  @include breakpoint($mobile-width) {
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+  &__img {
+    object-fit: cover;
+    width: 100%;
+    height: 16rem;
+  }
+  &__link {
+    max-width: 22rem;
     font-size: 1.6rem;
     font-family: $pn-semibold;
     color: $color-black;
     text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      color: $color-blue;
+    }
   }
 }
 /* end features */
 
 /* begin footer */
-.footer{
+.footer {
   background-color: $color-black;
-  &__inner{
+  &__inner {
     padding-top: 8rem;
+    @include breakpoint($tablet-width) {
+      padding-top: 4rem;
+    }
   }
 }
-.footer-items{
+.footer-items {
   display: flex;
   justify-content: space-between;
+  @include breakpoint($tablet-width) {
+    flex-wrap: wrap;
+  }
 }
-.footer-item{
-  width: 25%;
-  &__title{
+.footer-item {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  min-width: 20rem;
+  @include breakpoint($tablet-width) {
+    margin-bottom: 3rem;
+  }
+  @include breakpoint($mobile-width) {
+    flex-basis: 100%;
+  }
+  &__title {
     font-size: 1.7rem;
     font-family: $pn-exBold;
     text-transform: uppercase;
     margin: 0 0 2.5rem 0;
+    @include breakpoint($mobile-width) {
+      margin: 0 0 1rem 0;
+    }
   }
-  &__list{
-    &-element{
-      & + .footer-item__list-element{
+  &__list {
+    &-element {
+      & + .footer-item__list-element {
         margin-top: 2rem;
+        @include breakpoint($mobile-width) {
+          margin-top: 0.5rem;
+        }
       }
     }
-    &-link{
+    &-link {
       font-size: 1.4rem;
       color: $color-gray;
       text-decoration: none;
+      transition: all 0.3s ease-in-out;
+      &:hover {
+        color: $color-blue;
+      }
     }
   }
-  &__form{
+  &__form {
     position: relative;
-    &-input{
+    &-input {
       padding-right: 6rem;
       padding-left: 1.5rem;
       height: 4.2rem;
       width: 100%;
       font-family: $pn-regular;
       font-size: 1.4rem;
-      color: $color-gray-placeholder;
+      color: $color-blue;
+      &::placeholder {
+        color: $color-gray-placeholder;
+      }
     }
-    &-btn{
+    &-btn {
       @include button-reset;
       position: absolute;
       right: 0;
@@ -205,28 +375,70 @@
     }
   }
 }
-.footer-socials{
+.footer-subscribe {
+  flex-shrink: 0;
+  flex-basis: 30rem;
+}
+.footer-socials {
   display: flex;
   justify-content: space-between;
   margin-top: 6rem;
-  &__link{
+  @include breakpoint($tablet-width) {
+    margin-top: 3rem;
+  }
+  &__link {
     font-size: 1.8rem;
     color: $color-white;
     text-decoration: none;
+    transition: all .3s ease-in-out;
     & + .footer-socials__link {
       margin-left: 2.8rem;
+    }
+    &:hover{
+      color: $color-blue;
     }
     &-text {
       font-size: 0;
     }
   }
 }
-.footer-bottom{
+.footer-bottom {
   padding-top: 6rem;
   padding-bottom: 6rem;
+  display: flex;
+  justify-content: space-between;
+  @include breakpoint($tablet-width) {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
 }
-.footer-copy{
+.footer-copy {
   font-family: $pn-semibold;
   font-size: 1.4rem;
+  @include breakpoint($mobile-width) {
+    font-size: 1rem;
+  }
+}
+.region-btn {
+  display: flex;
+  align-items: center;
+  font-family: $pn-semibold;
+  @include button-reset;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: $color-white;
+  transition: all .3s ease-in-out;
+  @include breakpoint($mobile-width) {
+    font-size: 1rem;
+  }
+  &:hover{
+    color: $color-blue;
+  }
+  &__icon {
+    margin-right: 1.5rem;
+    @include breakpoint($mobile-width) {
+      margin-right: 0.5rem;
+    }
+  }
 }
 /* end footer */

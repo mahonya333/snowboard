@@ -35,6 +35,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+.icon-search:before {
+  content: "\f002";
+}
+.icon-lock:before {
+  content: "\f023";
+}
+.icon-align-justify:before {
+  content: "\f039";
+}
 .icon-twitter:before {
   content: "\f099";
 }

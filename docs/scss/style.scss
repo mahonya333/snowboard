@@ -28,12 +28,13 @@
     }
   }
 }
-.header-logo {
-  margin-right: 4rem;
-}
 .header-navigation {
   display: flex;
+  &__logo {
+    margin-right: 4rem;
+  }
   &__list {
+    list-style: none;
     display: flex;
     align-items: center;
     @include breakpoint($mobile-width) {
@@ -54,31 +55,31 @@
     @include min-breakpoint($mobile-width) {
       display: flex !important;
     }
-    &-item {
-      & + .header-navigation__list-item {
-        margin-left: 2.5rem;
-        @include breakpoint($mobile-width) {
-          margin-left: 0;
-          border-top: 1px solid $color-white;
-        }
+  }
+  &__list-item {
+    & + .header-navigation__list-item {
+      margin-left: 2.5rem;
+      @include breakpoint($mobile-width) {
+        margin-left: 0;
+        border-top: 1px solid $color-white;
       }
     }
-    &-link {
-      font-family: $pn-semibold;
-      color: $color-white;
-      font-size: 1.3rem;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: all 0.3s ease-in-out;
+  }
+  &__list-link {
+    font-family: $pn-semibold;
+    color: $color-white;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    @include breakpoint($mobile-width) {
+      display: block;
+      padding: 0.5rem 1.5rem;
+    }
+    &:hover {
+      color: $color-blue;
       @include breakpoint($mobile-width) {
-        display: block;
-        padding: 0.5rem 1.5rem;
-      }
-      &:hover {
-        color: $color-blue;
-        @include breakpoint($mobile-width) {
-          color: #13527f;
-        }
+        color: #13527f;
       }
     }
   }
@@ -111,58 +112,57 @@
 /* end header */
 
 /* begin banner */
-.banner {
-  &-item {
-    min-height: 65rem;
+.banner-item {
+  min-height: 65rem;
+  @include breakpoint($mobile-width) {
+    min-height: 45rem;
+  }
+  &__content {
+    max-width: 50rem;
+    width: 100%;
+    margin: 21rem auto 0 auto;
     @include breakpoint($mobile-width) {
-      min-height: 45rem;
+      text-align: center;
+      margin: 13rem auto 0 auto;
     }
-    &__content {
-      max-width: 50rem;
-      width: 100%;
-      margin: 21rem auto 0 auto;
-      @include breakpoint($mobile-width) {
-        text-align: center;
-        margin: 13rem auto 0 auto;
-      }
-      &-title {
-        font-family: $pn-exBold;
-        font-size: 8rem;
-        line-height: 1;
-        margin: 0;
-        text-transform: uppercase;
-        @include breakpoint($mobile-width) {
-          font-size: 4rem;
-        }
-        &--black {
-          color: $color-black;
-        }
-      }
-      &-link {
-        font-family: $pn-exBold;
-        display: inline-block;
-        margin-top: 4rem;
-        font-size: 1.4rem;
-        color: $color-white;
-        text-transform: uppercase;
-        padding: 2rem 1rem;
-        max-width: 15rem;
-        width: 100%;
-        text-align: center;
-        background-color: $color-black;
-        margin-left: calc(100% - 15rem);
-        transition: all 0.3s ease-in-out;
-        cursor: pointer;
-        @include breakpoint($mobile-width) {
-          margin-left: 0;
-        }
-        &:hover {
-          color: $color-blue;
-        }
-      }
+  }
+  &__content-title {
+    font-family: $pn-exBold;
+    font-size: 8rem;
+    line-height: 1;
+    margin: 0;
+    text-transform: uppercase;
+    @include breakpoint($mobile-width) {
+      font-size: 4rem;
+    }
+    &--black {
+      color: $color-black;
+    }
+  }
+  &__content-link {
+    font-family: $pn-exBold;
+    display: inline-block;
+    margin-top: 4rem;
+    font-size: 1.4rem;
+    color: $color-white;
+    text-transform: uppercase;
+    padding: 2rem 1rem;
+    max-width: 15rem;
+    width: 100%;
+    text-align: center;
+    background-color: $color-black;
+    margin-left: calc(100% - 15rem);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    @include breakpoint($mobile-width) {
+      margin-left: 0;
+    }
+    &:hover {
+      color: $color-blue;
     }
   }
 }
+
 /* end banner */
 
 /* begin company */
@@ -179,31 +179,31 @@
     padding-bottom: 1.5rem;
   }
 }
-.company-content {
+.company__content {
   max-width: 61rem;
   width: 100%;
   @include breakpoint($mobile-width) {
     max-width: 100%;
   }
-  &__title {
-    font-family: $pn-exBold;
-    font-size: 4.8rem;
-    text-transform: uppercase;
-    margin: 0 0 6.5rem 0;
-    @include breakpoint($mobile-width) {
-      font-size: 2.8rem;
-      margin: 0 0 2.5rem 0;
-      text-align: center;
-    }
+}
+.company__content-title {
+  font-family: $pn-exBold;
+  font-size: 4.8rem;
+  text-transform: uppercase;
+  margin: 0 0 6.5rem 0;
+  @include breakpoint($mobile-width) {
+    font-size: 2.8rem;
+    margin: 0 0 2.5rem 0;
+    text-align: center;
   }
-  &__text {
-    font-size: 1.5rem;
-    line-height: 3rem;
-    & + .company-content__text {
-      margin-top: 4rem;
-      @include breakpoint($mobile-width) {
-        margin-top: 2rem;
-      }
+}
+.company__content-text {
+  font-size: 1.5rem;
+  line-height: 3rem;
+  & + .company__content-text {
+    margin-top: 4rem;
+    @include breakpoint($mobile-width) {
+      margin-top: 2rem;
     }
   }
 }
@@ -252,19 +252,16 @@
   display: flex;
   justify-content: space-between;
   padding: 8.5rem 0;
-  margin-left: -2rem;
   @include breakpoint($tablet-width) {
     flex-wrap: wrap;
     padding: 4.5rem 0;
   }
   @include breakpoint($mobile-width) {
-    margin-left: 0;
     padding: 2rem 0;
   }
 }
 .features-item {
   flex-basis: calc(25% - 2rem);
-  margin-left: 2rem;
   @include breakpoint($tablet-width) {
     flex-basis: calc(50% - 2rem);
     padding-bottom: 2rem;
@@ -329,50 +326,51 @@
     }
   }
   &__list {
-    &-element {
-      & + .footer-item__list-element {
-        margin-top: 2rem;
-        @include breakpoint($mobile-width) {
-          margin-top: 0.5rem;
-        }
+    list-style: none;
+  }
+  &__list-element {
+    & + .footer-item__list-element {
+      margin-top: 2rem;
+      @include breakpoint($mobile-width) {
+        margin-top: 0.5rem;
       }
     }
-    &-link {
-      font-size: 1.4rem;
-      color: $color-gray;
-      text-decoration: none;
-      transition: all 0.3s ease-in-out;
-      &:hover {
-        color: $color-blue;
-      }
+  }
+  &__list-link {
+    font-size: 1.4rem;
+    color: $color-gray;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      color: $color-blue;
     }
   }
   &__form {
     position: relative;
-    &-input {
-      padding-right: 6rem;
-      padding-left: 1.5rem;
-      height: 4.2rem;
-      width: 100%;
-      font-family: $pn-regular;
-      font-size: 1.4rem;
-      color: $color-blue;
-      &::placeholder {
-        color: $color-gray-placeholder;
-      }
+  }
+  &__form-input{
+    padding-right: 6rem;
+    padding-left: 1.5rem;
+    height: 4.2rem;
+    width: 100%;
+    font-family: $pn-regular;
+    font-size: 1.4rem;
+    color: $color-blue;
+    &::placeholder {
+      color: $color-gray-placeholder;
     }
-    &-btn {
-      @include button-reset;
-      position: absolute;
-      right: 0;
-      width: 6rem;
-      height: 100%;
-      background-color: $color-gray-bg;
-      color: $color-black-light;
-      font-family: $pn-exBold;
-      font-style: 1.5rem;
-      text-transform: uppercase;
-    }
+  }
+  &__form-btn{
+    @include button-reset;
+    position: absolute;
+    right: 0;
+    width: 6rem;
+    height: 100%;
+    background-color: $color-gray-bg;
+    color: $color-black-light;
+    font-family: $pn-exBold;
+    font-style: 1.5rem;
+    text-transform: uppercase;
   }
 }
 .footer-subscribe {
@@ -390,11 +388,8 @@
     font-size: 1.8rem;
     color: $color-white;
     text-decoration: none;
-    transition: all .3s ease-in-out;
-    & + .footer-socials__link {
-      margin-left: 2.8rem;
-    }
-    &:hover{
+    transition: all 0.3s ease-in-out;
+    &:hover {
       color: $color-blue;
     }
     &-text {
@@ -427,11 +422,11 @@
   font-size: 1.4rem;
   line-height: 1;
   color: $color-white;
-  transition: all .3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   @include breakpoint($mobile-width) {
     font-size: 1rem;
   }
-  &:hover{
+  &:hover {
     color: $color-blue;
   }
   &__icon {
